@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/css/style.css">
+
+<h2>Portfolio Name</h2>
+<h3><%= data.title %></h1>
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <% data.photos.forEach((photo, index) => { %>
+            <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" class="<%= index === 0 ? 'active' : '' %>"></li>
+        <% }) %>
+    </ol>
+    <div class="carousel-inner">
+        <% data.photos.forEach((photo, index) => { %>
+            <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+                <img class="d-block w-100" src="\<%= photo %>" alt="Slide <%= index + 1 %>">
+            </div>
+        <% }) %>
+    </div>    
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<h2 style="margin-top: 20px; text-align: center;">Portfolio Description</h2>
+<article class="article" >
+    <%= data.body %>
+</article>
+

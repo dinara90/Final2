@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Data Visualization</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h2>Top Cryptocurrencies</h2>
+    <ul>
+        <% cryptosData.forEach(crypto => { %>
+            <li>
+                <strong><%= crypto.name %> (<%= crypto.symbol %>)</strong>: $<%= crypto.current_price %>
+                - Market Cap: $<%= crypto.market_cap %>
+                - 24h Change: <%= crypto.price_change_percentage_24h %>% 
+            </li>
+        <% }) %>
+    </ul>
+
+    <canvas id="cryptoChart"></canvas>
+    <script>
+        const ctx = document.getElementById('cryptoChart').getContext('2d');
+        const labels = JSON.parse('<%= JSON.stringify(cryptosData.map(crypto => crypto.symbol)) %>');
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Market Cap',
+                data: JSON.parse('<%= JSON.stringify(cryptosData.map(crypto => crypto.market_cap)) %>'),
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+        };
+
+        const cryptoChart = new Chart(ctx, config);
+    </script>
+
+</body>
+</html>

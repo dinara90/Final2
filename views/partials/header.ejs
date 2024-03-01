@@ -1,0 +1,28 @@
+<script src="https://kit.fontawesome.com/e4e53f0238.js" crossorigin="anonymous"></script>
+<header class="header">
+    <a href="/" class="header__logo">Portfolio</a>
+    <nav class="header__nav">
+        <ul>
+            <li>
+                <a href="/" class="<%= isActiveRoute('/', currentRoute) %>">Home</a>
+            </li>
+            <li>
+                <a href="/stocks" class="<%= isActiveRoute('/stocks', currentRoute) %>">Stocks</a>
+            </li>
+            <li>
+                <a href="/news" class="<%= isActiveRoute('/news', currentRoute) %>">News</a>
+            </li>
+            <li>
+                <a href="/cryptos" class="<%= isActiveRoute('/cryptos', currentRoute) %>">Crypto</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="header__button">
+        <a href="/admin" class="admin">Admin Page</a>
+        <button class="searchBtn" aria-expanded="false">
+            Search
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+    </div>
+</header>
